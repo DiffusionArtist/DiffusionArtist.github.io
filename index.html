@@ -19,8 +19,39 @@
     }
   </style>
 
+  <style>
+    .image-popup {
+      overflow: hidden;
+      /* Ensures the enlarged image does not overflow its container */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
 
+    .image-popup img {
+      transition: transform 0.2s ease, transform-origin 0.2s ease;
+      /* Smooth transition */
+      transform-origin: var(--x) var(--y);
+      /* Use CSS variables */
+    }
 
+    .image-popup img:hover {
+      transform: scale(1.4);
+      /* Enlarge the image on hover */
+    }
+  </style>
+  <style>
+    .custom-image {
+      max-width: 80%;
+      /* Adjust this value to make the image smaller */
+      height: auto;
+      /* Maintain aspect ratio */
+      display: block;
+      margin: 0 auto;
+      /* Center the image within its container */
+    }
+  </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
@@ -43,7 +74,7 @@
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/icons8-artist-32.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -175,7 +206,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <div class="columns is-vcentered interpolation-panel">
+        <div class="columns is-vcentered image-popup">
           <img src="./static/images/fig_teaser_large.png" alt="Example results" style="width: 100%;">
         </div>
         <h2 class="subtitle has-text-centered">
@@ -268,65 +299,24 @@
       <!-- Articulation. -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Avatar Articulation</h2>
-
-          <!-- Shape. -->
-          <h3 class="title is-4">Shape Control</h3>
+          <h2 class="title is-3">Aesthetic Control</h2>
+          <div class="columns is-vcentered">
+            <img src="./static/images/fig_control_more.png" alt="Control" height="100%" class="custom-image">
+          </div>
           <div class="content has-text-justified">
             <p>
-              We can reshape the generated neural avatar by controlling the SMPL shape parameters, without
-              the need for re-training.
+              <span class="dnerf">Artist</span> allows the user to easily control the abstractness of the stylization,
+              which includes but is not limited to stroke, shape, and color.
+              results.
             </p>
-          </div>
-          <div class="columns is-vcentered interpolation-panel">
-            <video id="shape" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/web_shape.mp4" type="video/mp4">
-            </video>
           </div>
           <br />
           <!-- Shape End -->
 
-          <!-- Pose. -->
-          <h3 class="title is-4">Pose Control</h3>
-          <div class="content has-text-justified">
-            <p>
-              <span class="dnerf">AvatarCraft</span> also provides explicit control of the pose of the generated
-              neural
-              avatar, enabling various applications such as animation.
-            </p>
-          </div>
-          <div class="content has-text-centered">
-            <video id="pose" autoplay muted loop playsinline height="100%">
-              <source src="./static/videos/web_pose.mp4" type="video/mp4">
-            </video>
-          </div>
-          <!--/ Pose Control -->
-
-        </div>
-      </div>
-      <!--/ Composite. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Composite Rendering</h2>
-          <div class="content has-text-justified">
-            <p>
-              <span class="dnerf">AvatarCraft</span> encodes avatar as neural implicit fields, which allow us to put
-              the
-              avatar into realistic neural scene to achieve occlusion-aware rendering.
-            </p>
-          </div>
-          <video id="pose" autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/web_composite.mp4" type="video/mp4">
-          </video>
-          <br />
-          <!-- Shape End -->
 
 
-        </div>
-      </div>
-
-      <!-- Concurrent Work. -->
-      <!-- <div class="columns is-centered">
+          <!-- Concurrent Work. -->
+          <!-- <div class="columns is-centered">
         <div class="column is-full-width">
           <h2 class="title is-3">Related Links</h2>
 
@@ -359,7 +349,7 @@
       </div>
       / Concurrent Work. -->
 
-    </div>
+        </div>
   </section>
 
 
@@ -402,6 +392,46 @@
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const imagePopup = document.querySelector('.image-popup img');
+
+      imagePopup.addEventListener('mousemove', function (event) {
+        const rect = imagePopup.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+
+        // Calculate the transform-origin in percentage
+        let xPercent = (mouseX / rect.width) * 100;
+        let yPercent = (mouseY / rect.height) * 100;
+
+        // Define the boundaries
+        const lowerBoundary = 25; // 1/4 of 100
+        const upperBoundary = 75; // 3/4 of 100
+
+        // Map the mouse position to the new range
+        if (xPercent < lowerBoundary) {
+          xPercent = 0; // Map to 0%
+        } else if (xPercent > upperBoundary) {
+          xPercent = 100; // Map to 100%
+        } else {
+          xPercent = ((xPercent - lowerBoundary) / (upperBoundary - lowerBoundary)) * 100;
+        }
+
+        if (yPercent < lowerBoundary) {
+          yPercent = 0; // Map to 0%
+        } else if (yPercent > upperBoundary) {
+          yPercent = 100; // Map to 100%
+        } else {
+          yPercent = ((yPercent - lowerBoundary) / (upperBoundary - lowerBoundary)) * 100;
+        }
+
+        // Update CSS variables
+        imagePopup.style.setProperty('--x', `${xPercent}%`);
+        imagePopup.style.setProperty('--y', `${yPercent}%`);
+      });
+    });
+  </script>
 </body>
 
 </html>
