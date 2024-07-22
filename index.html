@@ -52,6 +52,118 @@
       /* Center the image within its container */
     }
   </style>
+
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(6, 150px);
+      /* 6 columns */
+      grid-template-rows: repeat(4, 150px);
+      /* 4 rows */
+      gap: 10px;
+      position: relative;
+    }
+
+    .gallery-item {
+      width: 150px;
+      height: 150px;
+      perspective: 1000px;
+      position: relative;
+      transition: z-index 0s 0.6s, filter 0.6s;
+      /* Ensure z-index works and add transitions */
+    }
+
+    .flip-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .flip-card-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .flip-card-front {
+      background-color: #bbb;
+    }
+
+    .flip-card-back {
+      background-color: #2980b9;
+      transform: rotateY(180deg);
+    }
+
+    .gallery-item:hover {
+      z-index: 1;
+      /* Bring hovered item to the top */
+      transition: z-index 0s;
+      /* Immediate z-index change on hover */
+    }
+
+    .gallery-item:hover .flip-card {
+      transform: rotateY(180deg) scale(2.1);
+    }
+
+    .gallery.hover-effect .gallery-item:not(:hover) {
+      filter: blur(6px) brightness(0.6);
+      /* Apply blur and dim effect */
+    }
+
+    .gallery-item:not(:hover) {
+      animation: delayZIndexReset 0.6s forwards;
+    }
+
+    @keyframes delayZIndexReset {
+      0% {
+        z-index: 1;
+      }
+
+      100% {
+        z-index: 0;
+      }
+    }
+
+    .text-box {
+      position: absolute;
+      top: 100%;
+      /* Start at the bottom of the image */
+      left: -20%;
+      width: 140%;
+      padding: 10px;
+      background-color: rgba(14, 14, 14, 0.571);
+      color: #fff;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(-40px) scale(0.5);
+      /* Initial position for the transition */
+      transition: opacity 0.5s, transform 0.4s;
+      box-sizing: border-box;
+      text-shadow: 3px 3px 4px rgba(0, 0, 0, 1);
+      font-weight: bold;
+
+      /* Make the font bold */
+      /* Add text shadow */
+    }
+
+    .gallery-item:hover .text-box {
+      opacity: 1;
+      transform: translateY(0);
+      /* Move to its final position */
+    }
+  </style>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
@@ -219,59 +331,7 @@
   </section>
 
 
-  <!-- Paper video. -->
-  <!-- <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3">Video</h2>
-      <div class="publication-video">
-        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="788.54" height="443"
-          type="text/html"
-          src="https://www.youtube.com/embed/GXPjdN-UF04?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com">
-        </iframe>
 
-        </iframe>
-      </div>
-    </div>
-  </div> -->
-  <!--/ Paper video. -->
-
-  <!-- <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Abstract. -->
-  <!-- <div class="columns is-centered has-text-centered">
-    <div class="column is-four-fifths">
-      <h2 class="title is-3">Abstract</h2>
-      <div class="content has-text-justified">
-        <p>
-          Neural implicit fields are powerful for representing 3D
-          scenes and generating high-quality novel views, but it re
-          mains challenging to use such implicit representations for
-          creating a 3D human avatar with a specific identity and
-          artistic style that can be easily animated. Our proposed
-          method, <span class="dnerf">AvatarCraft</span>, addresses this challenge by using diffusion models to
-          guide the learning of geometry
-          and texture for a neural avatar based on a single text prompt. We carefully design the optimization
-          framework of neural implicit fields, including a coarse-to-fine multi-bounding box
-          training strategy, shape regularization, and diffusion-based constraints, to produce high-quality geometry
-          and texture, to produce high-quality geometry and
-          texture. Additionally, we make the human avatar animatable by deforming the neural implicit field with an
-          explicit
-          warping field that maps the target human mesh to a template human mesh, both represented using parametric
-          human models. This simplifies the animation and
-          reshaping of
-          the generated avatar by controlling pose and shape parameters. Extensive experiments on various text
-          descriptions
-          show that <span class="dnerf">AvatarCraft</span> is effective and robust in creating human avatars and
-          rendering novel views, poses, and shapes.
-        </p>
-      </div>
-    </div>
-  </div> -->
-  <!--/ Abstract. -->
-
-  <!-- 
-  </div>
-  </section> -->
 
 
   <section class="section">
@@ -311,56 +371,344 @@
             </p>
           </div>
           <br />
-          <!-- Shape End -->
-
-
-
-          <!-- Concurrent Work. -->
-          <!-- <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Related Links</h2>
-
-          <div class="content has-text-justified">
-            <p>
-              There's a lot of excellent work that was introduced around the same time as ours.
-            </p>
-            <p>
-              <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an
-              idea similar to our windowed position encoding for coarse-to-fine optimization.
-            </p>
-            <p>
-              <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a
-                href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-              both use deformation fields to model non-rigid scenes.
-            </p>
-            <p>
-              Some works model videos with a NeRF by directly modulating the density, such as <a
-                href="https://video-nerf.github.io/">Video-NeRF</a>, <a
-                href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a
-                href="https://neural-3d-video.github.io/">DyNeRF</a>
-            </p>
-            <p>
-              There are probably many more by the time you are reading this. Check out <a
-                href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a
-                href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-            </p>
-          </div>
         </div>
-      </div>
-      / Concurrent Work. -->
 
-        </div>
   </section>
 
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+
+      </div>
+
+      <!-- Articulation. -->
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Gallery</h2>
+          <div class="gallery is-centered">
+            <!-- Repeat this block for each image pair in the 4x6 grid -->
+            <div class="gallery-item" data-front="static/images/gallery/55.png"
+              data-back="static/images/gallery/55_style_69.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/55.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">Cyberpunk style painting, detailed</div>
+            </div>
+
+
+            <div class="gallery-item" data-front="static/images/gallery/58.png"
+              data-back="static/images/gallery/58_style_41.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/58.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A precisionism painting, detailed, geometric shapes.</div>
+            </div>
+
+
+            <div class="gallery-item" data-front="static/images/gallery/60.png"
+              data-back="static/images/gallery/60_style_44.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/60.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">American comic, western style, detailed.</div>
+            </div>
+
+
+
+
+            <div class="gallery-item" data-front="static/images/gallery/62.png"
+              data-back="static/images/gallery/62_style_63.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/62.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">Rococo painting.</div>
+            </div>
+
+
+            <div class="gallery-item" data-front="static/images/gallery/64.png"
+              data-back="static/images/gallery/64_style_19.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/64.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A Renaissance painting, detailed, traditional.</div>
+            </div>
+
+
+            <div class="gallery-item" data-front="static/images/gallery/65.png"
+              data-back="static/images/gallery/65_style_11.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/65.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A abstract cubism painting, geometric shapes.</div>
+            </div>
+
+
+            <div class="gallery-item" data-front="static/images/gallery/70.png"
+              data-back="static/images/gallery/70_style_27.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/70.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A ink-wash watercolor painting.</div>
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/71.png"
+              data-back="static/images/gallery/71_style_26.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/71.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A fauvist painting, vivid colors.</div>
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/57.png"
+              data-back="static/images/gallery/57_style_58.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/57.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A precisionism painting, detailed, geometric shapes.</div>
+            </div>
+
+
+            <div class="gallery-item" data-front="static/images/gallery/77.png"
+              data-back="static/images/gallery/77_style_17.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/77.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">An impressionism painting, claude monet, vibrant color</div>
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/78.png"
+              data-back="static/images/gallery/78_style_34.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/78.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A traditional watercolor painting, colorful</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/61.png"
+              data-back="static/images/gallery/61_style_30.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/61.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A neo-expressionism painting, detailed brush strokes</div>
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/74.png"
+              data-back="static/images/gallery/74_style_33.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/74.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A pixel art painting, detailed, 8-bit</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/63.png"
+              data-back="static/images/gallery/63_style_26.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/63.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A fauvist painting, vivid colors</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/52.png"
+              data-back="static/images/gallery/52_style_28.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/52.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">An abstract cubist painting, geometric shapes</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/51.png"
+              data-back="static/images/gallery/51_style_43.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/51.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">painting by Edward Munch.</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/20.png"
+              data-back="static/images/gallery/20_style_33.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/20.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A pixel art painting, detailed, 8-bit.</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/35.png"
+              data-back="static/images/gallery/35_style_27.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/35.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">An ink-wash watercolor painting.</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/49.png"
+              data-back="static/images/gallery/49_style_52.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/49.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">Dadaism style art.</div>
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/47.png"
+              data-back="static/images/gallery/47_style_31.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/47.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A starry night-style painting, by Van Gogh.</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/59.png"
+              data-back="static/images/gallery/59_style_32.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/59.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">A B&W line art drawing, bold lines.</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/53.png"
+              data-back="static/images/gallery/53_style_22.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/53.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">An impressionism painting, claude monet, vibrant color.</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/50.png"
+              data-back="static/images/gallery/50_style_39.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/50.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">An American comic style painting, detailed, comic book style</div>
+
+            </div>
+
+            <div class="gallery-item" data-front="static/images/gallery/32.png"
+              data-back="static/images/gallery/32_style_34.png">
+              <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                  style="background-image: url('static/images/gallery/32.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+              </div>
+              <div class="text-box">An traditional watercolor painting, colorful.</div>
+
+            </div>
+            <br />
+          </div>
+
+  </section>
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{jiang2023avatarcraft,
-      title={AvatarCraft: Transforming Text into Neural Human Avatars with Parameterized Shape and Pose Control},
-      author={Ruixiang Jiang and Can Wang and Jingbo Zhang and Menglei Chai and Mingming He and Dongdong Chen and Jing Liao},
-      year={2023},
-      eprint={2303.17606},
+      <pre><code>@misc{jiang2024artist,
+      title={Artist: Aesthetically Controllable Text-Driven Stylization without Training},
+      author={Ruixiang Jiang and Changwen Chen},
+      year={2024},
+      eprint={2407.xxxxxx},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
       }
@@ -429,6 +777,36 @@
         // Update CSS variables
         imagePopup.style.setProperty('--x', `${xPercent}%`);
         imagePopup.style.setProperty('--y', `${yPercent}%`);
+      });
+    });
+  </script>
+
+  <script>
+    const gallery = document.querySelector('.gallery');
+    const items = gallery.querySelectorAll('.gallery-item');
+
+    items.forEach(item => {
+      item.addEventListener('mouseenter', function () {
+        // Add hover-effect class to the gallery
+        gallery.classList.add('hover-effect');
+
+        // Replace the placeholder with the actual image
+        const frontImage = this.getAttribute('data-front');
+        const backImage = this.getAttribute('data-back');
+        const frontElement = this.querySelector('.flip-card-front');
+        const backElement = this.querySelector('.flip-card-back');
+
+        if (frontElement.style.backgroundImage === 'url("placeholder.jpg")') {
+          frontElement.style.backgroundImage = `url(${frontImage})`;
+        }
+        if (backElement.style.backgroundImage === 'url("placeholder.jpg")') {
+          backElement.style.backgroundImage = `url(${backImage})`;
+        }
+      });
+
+      item.addEventListener('mouseleave', function () {
+        // Remove hover-effect class from the gallery
+        gallery.classList.remove('hover-effect');
       });
     });
   </script>

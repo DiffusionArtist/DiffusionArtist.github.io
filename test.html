@@ -4,62 +4,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Grid Pop-up Effect</title>
+    <title>Lazy Load Image Flip Gallery</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-        }
-
-        .grid {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
         }
 
-        .grid-item {
-            position: relative;
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(6, 150px);
+            /* 6 columns */
+            grid-template-rows: repeat(4, 150px);
+            /* 4 rows */
+            gap: 10px;
+        }
+
+        .gallery-item {
             width: 150px;
             height: 150px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
+            perspective: 1000px;
         }
 
-        .grid-item img {
+        .flip-card {
+            position: relative;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
         }
 
-        .grid-item:hover {
-            transform: scale(1.3);
-            z-index: 10;
-            /* Ensure the hovered item is above other items */
+        .flip-card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .flip-card-front {
+            background-color: #bbb;
+        }
+
+        .flip-card-back {
+            background-color: #2980b9;
+            transform: rotateY(180deg);
+        }
+
+        .gallery-item:hover {
+            z-index: 1;
+            /* Bring hovered item to the top */
+        }
+
+        .gallery-item:hover .flip-card {
+            transform: rotateY(180deg) scale(1.3);
         }
     </style>
 </head>
 
 <body>
-    <div class="grid">
-        <div class="grid-item">
-            <img src="https://via.placeholder.com/150" alt="Image 1">
+    <div class="gallery">
+        <!-- Repeat this block for each image pair in the 4x6 grid -->
+        <div class="gallery-item" data-front="static/images/gallery/55.png"
+            data-back="static/images/gallery/55_style_69.png">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front"
+                    style="background-image: url('static/images/gallery/55.png');">
+                </div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+
+            </div>
         </div>
-        <div class="grid-item">
-            <img src="https://via.placeholder.com/150" alt="Image 2">
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
         </div>
-        <div class="grid-item">
-            <img src="https://via.placeholder.com/150" alt="Image 3">
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
         </div>
-        <div class="grid-item">
-            <img src="https://via.placeholder.com/150" alt="Image 4">
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
         </div>
-        <div class="grid-item">
-            <img src="https://via.placeholder.com/150" alt="Image 5">
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
         </div>
-        <!-- Add more grid items as needed -->
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <div class="gallery-item" data-front="image-a2.jpg" data-back="image-b2.jpg">
+            <div class="flip-card">
+                <div class="flip-card-inner flip-card-front" style="background-image: url('placeholder.jpg');"></div>
+                <div class="flip-card-inner flip-card-back" style="background-image: url('placeholder.jpg');"></div>
+            </div>
+        </div>
+        <!-- Add more .gallery-item blocks here for the rest of the images -->
     </div>
+
+    <script>
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                const frontImage = this.getAttribute('data-front');
+                const backImage = this.getAttribute('data-back');
+                this.querySelector('.flip-card-front').style.backgroundImage = `url(${frontImage})`;
+                this.querySelector('.flip-card-back').style.backgroundImage = `url(${backImage})`;
+            });
+        });
+    </script>
 </body>
 
 </html>
