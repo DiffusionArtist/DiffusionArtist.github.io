@@ -3,11 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Text-driven creation of articulated neural human avatars.">
-  <meta name="keywords" content="AvatarCraft, NeRF, text-to-3D, Diffusion">
+  <meta name="description" content="DiffArtist: Towards Structure and Appearance Controllable Image Stylization">
+  <meta name="keywords" content="DiffArtist, Style Transfer">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Artist: Aesthetically Controllable Text-Driven Stylization without
-    Training</title>
+  <title>DiffArtist: Towards Structure and Appearance Controllable Image Stylization</title>
 
   <style>
     .gradient-text {
@@ -61,7 +60,7 @@
   </style>
   <style>
     .custom-image {
-      max-width: 80%;
+      max-width: 100%;
       /* Adjust this value to make the image smaller */
       height: auto;
       /* Maintain aspect ratio */
@@ -258,9 +257,9 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title"><span class="gradient-text">Artist</span>: Aesthetically
-              Controllable Text-Driven Stylization without
-              Training</h1>
+            <h1 class="title is-1 publication-title"><span class="gradient-text">DiffArtist</span>: Towards Structure
+              and Appearance Controllable Image Stylization</h1>
+            <h2 class="is-size-3"> ACM MM 2025</h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
                 <a href="https://j-rx.com">Ruixiang Jiang</a><sup></sup>,</span>
@@ -344,7 +343,7 @@
     </div>
   </section>
 
-  <section class="hero teaser">
+  <!-- <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
         <div class="columns is-vcentered image-popup">
@@ -358,52 +357,7 @@
         </h2>
       </div>
     </div>
-  </section>
-
-
-
-
-
-  <section class="section">
-    <div class="container is-max-desktop">
-
-      <div class="columns is-centered">
-
-
-      </div>
-      <!--/ Avatar Creation. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Method overview</h2>
-          <!-- Figure here -->
-          <div class="columns is-vcentered interpolation-panel">
-            <img src="./static/images/fig_overview.png" alt="Method Overview" height="100%">
-          </div>
-          <!-- Text below the figure -->
-          <span class="dnerf">Artist</span> disentangle the content and style generation into two separate denoising
-          processes with shared information, whose features are used to control the main stylization branch.
-          <br />
-        </div>
-      </div>
-
-      <!-- Articulation. -->
-      <div class="columns is-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3">Aesthetic Control</h2>
-          <div class="columns is-vcentered">
-            <img src="./static/images/fig_control_more.png" alt="Control" height="100%" class="custom-image">
-          </div>
-          <div class="content has-text-justified">
-            <p>
-              <span class="dnerf">Artist</span> allows the user to easily control the abstractness of the stylization,
-              which includes but is not limited to stroke, shape, and color.
-              results.
-            </p>
-          </div>
-          <br />
-        </div>
-
-  </section>
+  </section> -->
 
   <section class="section">
     <div class="container is-max-desktop">
@@ -415,14 +369,14 @@
       <!-- Articulation. -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3">Gallery</h2>
+          <h2 class="title is-3">Gallery (Hover to Stylize)</h2>
           <div class="gallery is-centered">
             <!-- Repeat this block for each image pair in the 4x6 grid -->
-            <div class="gallery-item" data-front="static/images/gallery/55.png"
-              data-back="static/images/gallery/55_style_69.png">
+            <div class="gallery-item" data-front="static/images/gallery/55.jpeg"
+              data-back="static/images/gallery/55_style_69.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/55.png');">
+                  style="background-image: url('static/images/gallery/55.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -432,11 +386,11 @@
             </div>
 
 
-            <div class="gallery-item" data-front="static/images/gallery/58.png"
-              data-back="static/images/gallery/58_style_41.png">
+            <div class="gallery-item" data-front="static/images/gallery/58.jpeg"
+              data-back="static/images/gallery/58_style_41.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/58.png');">
+                  style="background-image: url('static/images/gallery/58.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -446,11 +400,11 @@
             </div>
 
 
-            <div class="gallery-item" data-front="static/images/gallery/60.png"
-              data-back="static/images/gallery/60_style_44.png">
+            <div class="gallery-item" data-front="static/images/gallery/60.jpeg"
+              data-back="static/images/gallery/60_style_44.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/60.png');">
+                  style="background-image: url('static/images/gallery/60.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -462,11 +416,11 @@
 
 
 
-            <div class="gallery-item" data-front="static/images/gallery/62.png"
-              data-back="static/images/gallery/62_style_63.png">
+            <div class="gallery-item" data-front="static/images/gallery/62.jpeg"
+              data-back="static/images/gallery/62_style_63.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/62.png');">
+                  style="background-image: url('static/images/gallery/62.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -476,11 +430,11 @@
             </div>
 
 
-            <div class="gallery-item" data-front="static/images/gallery/64.png"
-              data-back="static/images/gallery/64_style_19.png">
+            <div class="gallery-item" data-front="static/images/gallery/64.jpeg"
+              data-back="static/images/gallery/64_style_19.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/64.png');">
+                  style="background-image: url('static/images/gallery/64.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -490,11 +444,11 @@
             </div>
 
 
-            <div class="gallery-item" data-front="static/images/gallery/65.png"
-              data-back="static/images/gallery/65_style_11.png">
+            <div class="gallery-item" data-front="static/images/gallery/65.jpeg"
+              data-back="static/images/gallery/65_style_11.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/65.png');">
+                  style="background-image: url('static/images/gallery/65.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -504,11 +458,11 @@
             </div>
 
 
-            <div class="gallery-item" data-front="static/images/gallery/70.png"
-              data-back="static/images/gallery/70_style_27.png">
+            <div class="gallery-item" data-front="static/images/gallery/70.jpeg"
+              data-back="static/images/gallery/70_style_27.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/70.png');">
+                  style="background-image: url('static/images/gallery/70.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -517,11 +471,11 @@
               <div class="text-box">A ink-wash watercolor painting.</div>
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/71.png"
-              data-back="static/images/gallery/71_style_26.png">
+            <div class="gallery-item" data-front="static/images/gallery/71.jpeg"
+              data-back="static/images/gallery/71_style_26.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/71.png');">
+                  style="background-image: url('static/images/gallery/71.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -530,11 +484,11 @@
               <div class="text-box">A fauvist painting, vivid colors.</div>
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/57.png"
-              data-back="static/images/gallery/57_style_58.png">
+            <div class="gallery-item" data-front="static/images/gallery/57.jpeg"
+              data-back="static/images/gallery/57_style_58.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/57.png');">
+                  style="background-image: url('static/images/gallery/57.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -544,11 +498,11 @@
             </div>
 
 
-            <div class="gallery-item" data-front="static/images/gallery/77.png"
-              data-back="static/images/gallery/77_style_17.png">
+            <div class="gallery-item" data-front="static/images/gallery/77.jpeg"
+              data-back="static/images/gallery/77_style_17.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/77.png');">
+                  style="background-image: url('static/images/gallery/77.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -557,11 +511,11 @@
               <div class="text-box">An impressionism painting, claude monet, vibrant color</div>
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/78.png"
-              data-back="static/images/gallery/78_style_34.png">
+            <div class="gallery-item" data-front="static/images/gallery/78.jpeg"
+              data-back="static/images/gallery/78_style_34.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/78.png');">
+                  style="background-image: url('static/images/gallery/78.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -571,11 +525,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/61.png"
-              data-back="static/images/gallery/61_style_30.png">
+            <div class="gallery-item" data-front="static/images/gallery/61.jpeg"
+              data-back="static/images/gallery/61_style_30.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/61.png');">
+                  style="background-image: url('static/images/gallery/61.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -584,11 +538,11 @@
               <div class="text-box">A neo-expressionism painting, detailed brush strokes</div>
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/74.png"
-              data-back="static/images/gallery/74_style_33.png">
+            <div class="gallery-item" data-front="static/images/gallery/74.jpeg"
+              data-back="static/images/gallery/74_style_33.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/74.png');">
+                  style="background-image: url('static/images/gallery/74.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -598,11 +552,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/63.png"
-              data-back="static/images/gallery/63_style_26.png">
+            <div class="gallery-item" data-front="static/images/gallery/63.jpeg"
+              data-back="static/images/gallery/63_style_26.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/63.png');">
+                  style="background-image: url('static/images/gallery/63.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -612,11 +566,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/52.png"
-              data-back="static/images/gallery/52_style_28.png">
+            <div class="gallery-item" data-front="static/images/gallery/52.jpeg"
+              data-back="static/images/gallery/52_style_28.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/52.png');">
+                  style="background-image: url('static/images/gallery/52.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -626,11 +580,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/51.png"
-              data-back="static/images/gallery/51_style_43.png">
+            <div class="gallery-item" data-front="static/images/gallery/51.jpeg"
+              data-back="static/images/gallery/51_style_43.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/51.png');">
+                  style="background-image: url('static/images/gallery/51.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -640,11 +594,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/20.png"
-              data-back="static/images/gallery/20_style_33.png">
+            <div class="gallery-item" data-front="static/images/gallery/20.jpeg"
+              data-back="static/images/gallery/20_style_33.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/20.png');">
+                  style="background-image: url('static/images/gallery/20.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -654,11 +608,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/35.png"
-              data-back="static/images/gallery/35_style_27.png">
+            <div class="gallery-item" data-front="static/images/gallery/35.jpeg"
+              data-back="static/images/gallery/35_style_27.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/35.png');">
+                  style="background-image: url('static/images/gallery/35.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -668,11 +622,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/49.png"
-              data-back="static/images/gallery/49_style_52.png">
+            <div class="gallery-item" data-front="static/images/gallery/49.jpeg"
+              data-back="static/images/gallery/49_style_52.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/49.png');">
+                  style="background-image: url('static/images/gallery/49.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -681,11 +635,11 @@
               <div class="text-box">Dadaism style art.</div>
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/47.png"
-              data-back="static/images/gallery/47_style_31.png">
+            <div class="gallery-item" data-front="static/images/gallery/47.jpeg"
+              data-back="static/images/gallery/47_style_31.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/47.png');">
+                  style="background-image: url('static/images/gallery/47.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -695,11 +649,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/59.png"
-              data-back="static/images/gallery/59_style_32.png">
+            <div class="gallery-item" data-front="static/images/gallery/59.jpeg"
+              data-back="static/images/gallery/59_style_32.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/59.png');">
+                  style="background-image: url('static/images/gallery/59.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -709,11 +663,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/53.png"
-              data-back="static/images/gallery/53_style_22.png">
+            <div class="gallery-item" data-front="static/images/gallery/53.jpeg"
+              data-back="static/images/gallery/53_style_22.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/53.png');">
+                  style="background-image: url('static/images/gallery/53.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -723,11 +677,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/50.png"
-              data-back="static/images/gallery/50_style_39.png">
+            <div class="gallery-item" data-front="static/images/gallery/50.jpeg"
+              data-back="static/images/gallery/50_style_39.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/50.png');">
+                  style="background-image: url('static/images/gallery/50.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -737,11 +691,11 @@
 
             </div>
 
-            <div class="gallery-item" data-front="static/images/gallery/32.png"
-              data-back="static/images/gallery/32_style_34.png">
+            <div class="gallery-item" data-front="static/images/gallery/32.jpeg"
+              data-back="static/images/gallery/32_style_34.jpeg">
               <div class="flip-card">
                 <div class="flip-card-inner flip-card-front"
-                  style="background-image: url('static/images/gallery/32.png');">
+                  style="background-image: url('static/images/gallery/32.jpeg');">
                 </div>
                 <div class="flip-card-inner flip-card-back" style="background-image: url('static/images/loading.png');">
                 </div>
@@ -752,21 +706,96 @@
             </div>
             <br />
           </div>
-
+          <h2 class="subtitle has-text-centered">
+            <span class="dnerf">TL;DR: DiffArtist</span> is a zero-shot text-driven stylization method. It requires no
+            finetuning, nor additional ControlNets. Unlike existing stylization methods that entangles structure and
+            appearance, the strength of them are highly controllable in DiffArtist.
+          </h2>
+        </div>
+      </div>
   </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <h2 class="title is-3">Method overview</h2>
+            <div class="hero-body">
+              <div class="columns is-vcentered image-popup">
+                <!-- FIX 1: Removed the duplicate id. It's better to use classes for shared behavior. -->
+                <img src="./static/images/fig_overview.png" alt="Method Overview" style="width: 100%;">
+              </div>
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">DiffArtist</span> decompose the structure and appearance stylization with two two
+                separate
+                denoising
+                processes, allowing fine-grained control for both terms.
+              </h2>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Articulation. -->
+      <div class="columns is-centered">
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <h2 class="title is-3">Disentangled Structure and Appearance Control</h2>
+            <div class="hero-body">
+              <div class="columns is-vcentered image-popup">
+                <!-- FIX 1: Removed the duplicate id. -->
+                <img src="./static/images/fig_control_cmp_large.png" alt="Disentangled Structure and Appearance Control"
+                  style="width: 100%;">
+              </div>
+              <h2 class="subtitle has-text-centered">
+                <span class="dnerf">DiffArtist</span> Enables Disentangled Control over Structure and Appearance.
+                Compared with previous methods, the unprecedented dual controllability allows for more customizable
+                stylization.
+              </h2>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="columns is-centered">
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <h2 class="title is-3">Additional Control Visualizations</h2>
+            <div class="hero-body">
+              <div class="columns is-vcentered image-popup">
+                <!-- FIX 1: Removed the duplicate id. -->
+                <img src="./static/images/fig_supp_control_cmp_2.jpg"
+                  alt="Disentangled Structure and Appearance Control" style="width: 100%;">
+              </div>
+            </div>
+
+            <div class="hero-body">
+              <div class="columns is-vcentered image-popup">
+                <!-- FIX 1: Removed the duplicate id. -->
+                <img src="./static/images/fig_supp_control_cmp_1.jpg"
+                  alt="Disentangled Structure and Appearance Control" style="width: 100%;">
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@misc{jiang2024artist,
-      title={Artist: Aesthetically Controllable Text-Driven Stylization without Training},
-      author={Ruixiang Jiang and Changwen Chen},
-      year={2024},
-      eprint={2407.15842},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-      }
-}</code></pre>
+      <pre><code>@article{jiang2024diffartist,
+      title={DiffArtist: Towards Structure and Appearance Controllable Image Stylization},
+      author={Jiang, Ruixiang and Chen, Changwen},
+      journal={arXiv preprint arXiv:2407.15842},
+      year={2024}
+      }</code></pre>
     </div>
   </section>
 
@@ -796,41 +825,59 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const imagePopup = document.querySelector('.image-popup img');
+      // Select all images that should have the zoom effect.
+      const zoomableImages = document.querySelectorAll('.image-popup img');
 
-      imagePopup.addEventListener('mousemove', function (event) {
-        const rect = imagePopup.getBoundingClientRect();
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
+      // Apply the logic to each image individually.
+      zoomableImages.forEach(function (image) {
 
-        // Calculate the transform-origin in percentage
-        let xPercent = (mouseX / rect.width) * 100;
-        let yPercent = (mouseY / rect.height) * 100;
+        let isUpdatePending = false;
+        let lastMouseEvent = null;
 
-        // Define the boundaries
-        const lowerBoundary = 25; // 1/4 of 100
-        const upperBoundary = 75; // 3/4 of 100
+        // This is the function that does the heavy lifting.
+        // We will ask the browser to run it at the optimal time.
+        const updateTransformOrigin = () => {
+          if (!lastMouseEvent) return;
 
-        // Map the mouse position to the new range
-        if (xPercent < lowerBoundary) {
-          xPercent = 0; // Map to 0%
-        } else if (xPercent > upperBoundary) {
-          xPercent = 100; // Map to 100%
-        } else {
-          xPercent = ((xPercent - lowerBoundary) / (upperBoundary - lowerBoundary)) * 100;
-        }
+          const rect = image.getBoundingClientRect();
+          const mouseX = lastMouseEvent.clientX - rect.left;
+          const mouseY = lastMouseEvent.clientY - rect.top;
 
-        if (yPercent < lowerBoundary) {
-          yPercent = 0; // Map to 0%
-        } else if (yPercent > upperBoundary) {
-          yPercent = 100; // Map to 100%
-        } else {
-          yPercent = ((yPercent - lowerBoundary) / (upperBoundary - lowerBoundary)) * 100;
-        }
+          let xPercent = (mouseX / rect.width) * 100;
+          let yPercent = (mouseY / rect.height) * 100;
 
-        // Update CSS variables
-        imagePopup.style.setProperty('--x', `${xPercent}%`);
-        imagePopup.style.setProperty('--y', `${yPercent}%`);
+          const lowerBoundary = 25;
+          const upperBoundary = 75;
+
+          // Mapping logic remains the same
+          if (xPercent < lowerBoundary) xPercent = 0;
+          else if (xPercent > upperBoundary) xPercent = 100;
+          else xPercent = ((xPercent - lowerBoundary) / (upperBoundary - lowerBoundary)) * 100;
+
+          if (yPercent < lowerBoundary) yPercent = 0;
+          else if (yPercent > upperBoundary) yPercent = 100;
+          else yPercent = ((yPercent - lowerBoundary) / (upperBoundary - lowerBoundary)) * 100;
+
+          // Update the CSS variables for transform-origin
+          image.style.setProperty('--x', `${xPercent}%`);
+          image.style.setProperty('--y', `${yPercent}%`);
+
+          // Reset the flag so the next animation frame can be requested.
+          isUpdatePending = false;
+        };
+
+        // Listen for mouse movement over the image.
+        image.addEventListener('mousemove', function (event) {
+          // Store the latest mouse event.
+          lastMouseEvent = event;
+
+          // If an update is not already scheduled, schedule one.
+          if (!isUpdatePending) {
+            isUpdatePending = true;
+            // Use requestAnimationFrame for a smoother, more efficient update.
+            window.requestAnimationFrame(updateTransformOrigin);
+          }
+        });
       });
     });
   </script>
